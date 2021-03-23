@@ -23,8 +23,9 @@ export const interceptorFactory = (authClient: AuthClient, tokenCache?: TokenCac
 		return Promise.resolve(config);
 	}
 
-	const tokenPromise = tokenCache ? tokenCache.getToken(authClient) :
-		authClient().then(response => response.access_token);
+	const tokenPromise = tokenCache
+		? tokenCache.getToken(authClient)
+		: authClient().then(response => response.access_token);
 
 	// Request a authorization token (from cache) and cache it
 	return tokenPromise.then((token) => {
