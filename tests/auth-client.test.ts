@@ -2,8 +2,7 @@ import {expect} from "chai";
 import {describe} from "mocha";
 import sinon from "sinon";
 import axios, {AxiosError} from "axios";
-import {AuthClientFactory} from "../src/auth-client";
-import {AuthenticationFailedError} from "../src/errors/authentication-failed-error";
+import {clientFactory, AuthenticationFailedError} from "../src";
 
 const authClientOptions = { url : '/fooBarBaz', client_id: 'foo', client_secret: 'bar', grant_type: 'baz'};
 
@@ -16,7 +15,7 @@ describe('auth-client', () => {
 			data: authResponseJson
 		});
 
-		const authClient = AuthClientFactory(axiosInstance, authClientOptions);
+		const authClient = clientFactory(axiosInstance, authClientOptions);
 		const result = await authClient();
 		expect(result).to.eq(authResponseJson);
 	});
@@ -29,7 +28,7 @@ describe('auth-client', () => {
 		const axiosInstance = axios.create();
 		sinon.stub(axiosInstance, 'request').resolves(authResponse);
 
-		const authClient = AuthClientFactory(axiosInstance, authClientOptions);
+		const authClient = clientFactory(axiosInstance, authClientOptions);
 		let error: AxiosError|null = null, result = null;
 		try {
 			result = await authClient();
@@ -49,7 +48,7 @@ describe('auth-client', () => {
 		const axiosInstance = axios.create();
 		sinon.stub(axiosInstance, 'request').resolves(authResponseJson);
 
-		const authClient = AuthClientFactory(axiosInstance, authClientOptions);
+		const authClient = clientFactory(axiosInstance, authClientOptions);
 		let error: AuthenticationFailedError|null = null, result = null;
 		try {
 			result = await authClient();

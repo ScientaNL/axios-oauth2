@@ -1,5 +1,5 @@
-import { AxiosRequestConfig } from "axios";
-import { AuthClient } from "./auth-client";
+import {AxiosRequestConfig} from "axios";
+import {AuthClient} from "./auth-client";
 import {InvalidRequestError} from "./errors/invalid-request-error";
 
 export type RequestInterceptor = (config: AxiosRequestConfig) => Promise<AxiosRequestConfig>;
@@ -8,7 +8,7 @@ export interface TokenCache {
 	getToken(authClient: AuthClient, ...args: any[]): Promise<string|null|undefined>;
 }
 
-export const AuthTokenInterceptorFactory = (authClient: AuthClient, tokenCache?: TokenCache): RequestInterceptor => (config: AxiosRequestConfig) => {
+export const interceptorFactory = (authClient: AuthClient, tokenCache?: TokenCache): RequestInterceptor => (config: AxiosRequestConfig) => {
 	if (!config.headers) {
 		config.headers = {};
 	} else if (typeof config.headers != 'object') {

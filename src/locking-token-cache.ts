@@ -1,12 +1,12 @@
 import {createHash} from "crypto";
 import {LockingCache} from "@scienta/locking-cache";
 import {AuthClient, AuthenticationClientOptions} from "./auth-client";
-import {TokenCache} from "./auth-token-interceptor";
+import {TokenCache} from "./token-interceptor";
 
 export class LockingTokenCache implements TokenCache
 {
 	constructor(
-		private readonly lockingCache: LockingCache<string>,
+		private readonly lockingCache: LockingCache<string> = new LockingCache<string>(),
 		public defaultLockTimeout: number = 2000
 	) {}
 

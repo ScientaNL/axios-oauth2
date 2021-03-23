@@ -1,8 +1,7 @@
 import {expect} from "chai";
 import {describe} from "mocha";
-import {AuthTokenInterceptorFactory, RequestInterceptor} from "../src/auth-token-interceptor";
-import {AuthenticationClientOptions, AuthenticationResponseJson} from "../src/auth-client";
 import {AxiosRequestConfig} from "axios";
+import {interceptorFactory, RequestInterceptor, AuthenticationClientOptions, AuthenticationResponseJson} from "../src";
 
 const createInterceptor = (
 	authResponseJson: AuthenticationResponseJson,
@@ -12,7 +11,7 @@ const createInterceptor = (
 	const authClient = () => Promise.resolve(authResponseJson);
 	authClient.options = clientOptions;
 	authClient.requestConfig = authRequestConfig;
-	return AuthTokenInterceptorFactory(authClient);
+	return interceptorFactory(authClient);
 }
 
 describe('token-interceptor', () => {
@@ -46,7 +45,7 @@ describe('token-interceptor', () => {
 		const authClient = () => Promise.reject(error);
 		authClient.options = { url : '/', client_id: 'foo', client_secret: 'bar', grant_type: 'baz'};
 		authClient.requestConfig = {};
-		const interceptor = AuthTokenInterceptorFactory(authClient);
+		const interceptor = interceptorFactory(authClient);
 
 		const requestConfig = {};
 		let result, requestError;

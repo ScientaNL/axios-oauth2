@@ -27,7 +27,7 @@ export interface AuthenticationClientOptions {
 	sub?: string
 }
 
-export const AuthClientFactory = (
+export const clientFactory = (
 	axiosInstance: AxiosInstance,
 	options: AuthenticationClientOptions,
 	requestConfig: AxiosRequestConfig = { headers: { 'content-type': 'application/x-www-form-urlencoded' } }
