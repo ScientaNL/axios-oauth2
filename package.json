@@ -1,6 +1,6 @@
 {
 	"name": "@scienta/axios-oauth2",
-	"version": "1.1.0",
+	"version": "1.1.2",
 	"description": "Cacheable token interceptor for oauth requests with axios",
 	"license": "MIT",
 	"repository": {
