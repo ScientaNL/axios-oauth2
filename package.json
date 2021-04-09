@@ -22,11 +22,9 @@
 		"lint-build": "npm run lint && npm run build"
 	},
 	"dependencies": {
+		"@scienta/locking-cache": "^1.2.0",
 		"axios": "^0.21.1",
 		"qs": "^6.9.0"
-	},
-	"peerDependencies": {
-		"@scienta/locking-cache": "^1.1.5"
 	},
 	"devDependencies": {
 		"@babel/types": "^7.13.0",
@@ -50,13 +48,7 @@
 		"typescript": "^4.2.3"
 	},
 	"peerDependenciesMeta": {
-		"@scienta/locking-cache": {
-			"optional": true
-		},
 		"ioredis": {
-			"optional": true
-		},
-		"lock": {
 			"optional": true
 		},
 		"redlock": {
