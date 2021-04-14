@@ -22,7 +22,7 @@
 		"lint-build": "npm run lint && npm run build"
 	},
 	"dependencies": {
-		"@scienta/locking-cache": "^1.2.0",
+		"@scienta/locking-cache": "^1.3.0",
 		"axios": "^0.21.1",
 		"qs": "^6.9.0"
 	},
