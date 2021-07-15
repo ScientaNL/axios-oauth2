@@ -4,7 +4,7 @@ on:
     types: [ created ]
 jobs:
   npm-version-publish:
-    name: NPM publish locking-cache
+    name: NPM publish axios-oauth2
     runs-on: ubuntu-latest
     steps:
       - name: Cancel Previous Runs
