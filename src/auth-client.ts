@@ -23,7 +23,7 @@ export interface AuthenticationClientOptions {
 	password?: string,
 	code?: string,
 	refresh_token?: string,
-	scope?: string[]
+	scope?: string,
 	sub?: string
 }
 
