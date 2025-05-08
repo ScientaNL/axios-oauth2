@@ -25,7 +25,7 @@ export class LockingTokenCache implements TokenCache
 	protected generateTokenCacheKey(authOptions: AuthenticationClientOptions): string {
 		const keyParts = [authOptions.url, authOptions.grant_type, authOptions.client_id];
 		if (authOptions.scope?.length) {
-			keyParts.push(authOptions.scope.join(','));
+			keyParts.push(authOptions.scope);
 		}
 		return this.hashKey(keyParts.join('-'));
 	}
